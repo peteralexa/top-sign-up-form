@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+	padding: 0;
+}
+
+:root {
+    font-size: 62.5%;
+    --xlfont: 4rem;
+    --lfont: clamp(1.5rem, 5vw, 3rem);
+    --mfont: 2.4rem;
+    --sfont: 1.6rem;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    background-image: url(./images/maeva-vigier.jpg);
+    background-size: 100% 100%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-container {
+    width: 100%;
+    height: 15%;
+    background: black;
+    opacity: 0.4;
+    position: relative;
+    top: 15%;
+}
+
+.image-credits {
+    margin-top: auto;
+    margin-bottom: 10%;
+    color: white;
+    font-size: var(--sfont);
+    text-align: center;
+    position: relative;
+}
+
+.content {
+    font-size: var(--lfont);
+}
