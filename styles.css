@@ -1,21 +1,33 @@
 * {
     margin: 0;
 	padding: 0;
+    color: var(--maincolor);
+    text-decoration: none;
 }
 
 :root {
     box-sizing: border-box;
     font-size: 62.5%;
-    --xlfont: clamp(2.5rem, 5vw, 4rem);
-    --lfont: clamp(1.8rem, 4.5vw, 2.8rem);
-    --mfont: clamp(1.4rem, 4vw, 2.2rem);
-    --sfont: clamp(0.8rem, 3vw, 1rem);
+    --xlfont: clamp(2.5rem, 4vw, 4rem);
+    --lfont: clamp(1.8rem, 3.5vw, 2.8rem);
+    --mfont: clamp(1.4rem, 3vw, 2.2rem);
+    --sfont: clamp(0.8rem, 2vw, 1rem);
+    --maincolor: rgb(201, 201, 201);
+    --bodyfont: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
+    background: black;
     overflow-x: hidden;
     height: 100vh;
     width: 100vw;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    font-family: var(--bodyfont);
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 .container {
@@ -31,7 +43,7 @@ body {
 .image-container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
     height: 100%;
     background-image: url(./images/maeva-vigier.jpg);
     background-size: 100% 100%;
@@ -40,37 +52,89 @@ body {
     box-shadow: inset -110px 0px 30px -100px rgba(0,0,0,0.6);
 }
 
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        order: -1;
+        width: 100%;
+        height: 50vh;
+    }
+
+    .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-top: solid white 2px;
+        border-left: none !important;
+    }
+
+    .content-container:first-child {
+        padding-top: 3rem;
+    }
+
+    .create-account-container:last-child {
+        padding-bottom: 3rem;
+    }
+
+    .form-container > div {
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+    }
+
+    body {
+        overflow-x: hidden;
+        height: auto !important;
+        width: 100vw;
+    }
+}
+
 .form-container {
-    background: royalblue;
+    background: rgb(21, 21, 21);
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     gap: 20px;
     justify-content: center;
+    border-left: solid 2px white;
 }
 
 .form-container > div {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
 }
 
 .logo-container {
     width: 100%;
-    height: 15%;
     background: black;
     opacity: 0.4;
     position: relative;
     top: 10%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container p {
+    font-size: var(--xlfont);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    opacity: 1;
+}
+
+.logo-container span {
+    color: red !important;
+    font-weight: bold;
 }
 
 .image-credits {
     margin-top: auto;
-    margin-bottom: 10%;
-    color: gold;
-    font-size: var(--mfont);
+    padding-bottom: 2rem;
+    font-size: var(--sfont);
     text-align: center;
-    position: relative;
 }
 
 .content {
@@ -80,21 +144,14 @@ body {
 
 .form {
     font-size: var(--mfont);
-    background-color: gold;
-    -webkit-box-shadow: 34px 21px 51px 9px rgba(0,0,0,0.73);
-    -moz-box-shadow: 34px 21px 51px 9px rgba(0,0,0,0.73);
-    box-shadow: 34px 21px 51px 9px rgba(0,0,0,0.73);
-}
-
-form {
-    gap: 2rem;
+    border-bottom: 2px solid white;
 }
 
 .form-input {
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     flex-wrap: wrap;
-    width: 50%;
+    width: 70%;
 }
 
 label, 
@@ -121,18 +178,35 @@ input,
 
 input {
     margin-top: 0.5rem;
+    background: transparent;
+    border-radius: 0.5rem;
+    border: solid white 2px;
+    padding: 0.5rem;
 }
 
 #create-account-btn {
     position: relative;
-    bottom: -2.2rem;
+    bottom: -2rem;
     margin-top: 3rem;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    border-radius: 2rem;
+    border: solid white 2px;
+    background: rgb(21, 21, 21);
 }
 
 input {
     margin-top: 0.5rem;
+}
+
+#create-account-btn:active,
+#create-account-btn:focus {
+    background: var(--maincolor);
+    color: black;
+}
+
+input:invalid {
+    border: solid red 2px;
 }
